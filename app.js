@@ -69,7 +69,7 @@ app.get('/webhook', function(req, res) {
 app.get("/test", function(req,res){
 	console.log("test:ok");
 	res.status(200).send('ok');
-	callSendAPI("hello biloute t'es un king")
+	callSendAPI("hello biloute t'es un king");
 });
 
 /*
