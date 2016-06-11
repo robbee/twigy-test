@@ -71,6 +71,7 @@ app.get("/test", function(req,res){
 	res.status(200).send('receive : ' + req.query.id);
 	sendTextMessage(req.query.id, req.query.msg);
 	//sendButtonMessage(1300752483272187);
+	
 });
 
 /*
