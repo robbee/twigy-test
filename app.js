@@ -68,9 +68,9 @@ app.get('/webhook', function(req, res) {
 
 app.get("/test", function(req,res){
 	console.log("test:ok");
-	res.status(200).send('ok');
-	//sendTextMessage(1300752483272187, "hello biloute t'es un king");
-	sendButtonMessage(1300752483272187);
+	res.status(200).send('receive : ' + req.id);
+	sendTextMessage(req.id, "hello biloute t'es un king");
+	//sendButtonMessage(1300752483272187);
 });
 
 /*
