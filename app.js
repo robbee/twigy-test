@@ -68,8 +68,8 @@ app.get('/webhook', function(req, res) {
 
 app.get("/test", function(req,res){
 	console.log("test:ok");
-	res.status(200).send('receive : ' + req.param(id));
-	sendTextMessage(req.param(id), "hello biloute t'es un king");
+	res.status(200).send('receive : ' + req.params.id);
+	sendTextMessage(req.params.id, "hello biloute t'es un king");
 	//sendButtonMessage(1300752483272187);
 });
 
