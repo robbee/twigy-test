@@ -66,6 +66,11 @@ app.get('/webhook', function(req, res) {
   }  
 });
 
+app.get("/test", function(req,res){
+	console.log("test:ok");
+	res.status(200).send('ok');
+	callSendAPI("hello biloute t'es un king")
+});
 
 /*
  * All callbacks for Messenger are POST-ed. They will be sent to the same
