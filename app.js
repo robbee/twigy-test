@@ -225,6 +225,10 @@ function receivedMessage(event) {
         sendGenericMessage(senderID);
         break;
 
+			case 'wit':
+        sendWitMessage(senderID);
+        break;
+				
       case 'receipt':
         sendReceiptMessage(senderID);
         break;
@@ -327,6 +331,25 @@ function sendTextMessage(recipientId, messageText) {
 
   callSendAPI(messageData);
 }
+
+
+/*
+ * Send a text message using the Send API.
+ *
+ */
+function sendWitMessage(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: "coucou wit"
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
 
 /*
  * Send a button message using the Send API.
