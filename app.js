@@ -214,7 +214,7 @@ function receivedMessage(event) {
 
 
     if (messageText) {
-			sendTextMessage(senderID, messageText);
+        sendTextMessage(senderID, messageText);
     } else if (messageAttachments) {
         sendTextMessage(senderID, "Message with attachment received");
     }
@@ -280,12 +280,20 @@ function sendTextMessage(recipientId, messageText) {
 
     const sessionId = 'mysession123';
     const context = {};
-    const message = 'quel temps a paris ?';
+    const message = '';
 
     const actions = {
         say(sessionId, context, message, cb) {
-                console.log("=========");
-                console.log(message);
+                console.log('Yay, got Wit.ai response: ' + message);
+                var messageData = {
+                    recipient: {
+                        id: recipientId
+                    },
+                    message: {
+                        text: message
+                    }
+                };
+                callSendAPI(messageData);
                 cb();
             },
             merge(sessionId, context, entities, message, cb) {
@@ -298,23 +306,11 @@ function sendTextMessage(recipientId, messageText) {
 
     const client = new Wit(WIT_TOKEN, actions);
 
-    client.converse('my-user-session-42', messageText, {}, (error, data) => {
+    client.runActions('my-user-session-42', messageText, {}, (error, data) => {
         if (error) {
-            console.log('Oops! Got an error: ' + error);
+            console.log('Oops! Got an error: ');
         } else {
-            console.log('Yay, got Wit.ai response: ' + JSON.stringify(data));
-
-            var messageData = {
-                recipient: {
-                    id: recipientId
-                },
-                message: {
-                    text: data.msg
-                }
-            };
-
-            callSendAPI(messageData);
-
+            console.log('Waiting messages...');
         }
     });
 }
@@ -338,7 +334,7 @@ function callSendAPI(messageData) {
                 messageId, recipientId);
         } else {
             console.error("Unable to send message.");
-            console.error(response);
+            //console.error(response);
             console.error(error);
         }
     });
