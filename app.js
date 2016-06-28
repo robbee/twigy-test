@@ -33,23 +33,10 @@ app.use(express.static('public'));
  */
 
 // App Secret can be retrieved from the App Dashboard
-const APP_SECRET = (process.env.MESSENGER_APP_SECRET) ?
-    process.env.MESSENGER_APP_SECRET :
-    config.get('appSecret');
-
-// Arbitrary value used to validate a webhook
-const VALIDATION_TOKEN = (process.env.MESSENGER_VALIDATION_TOKEN) ?
-    (process.env.MESSENGER_VALIDATION_TOKEN) :
-    config.get('validationToken');
-
-// Generate a page access token for your page from the App Dashboard
-const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
-    (process.env.MESSENGER_PAGE_ACCESS_TOKEN) :
-    config.get('pageAccessToken');
-
-const WIT_TOKEN = (process.env.WIT_TOKEN) ?
-    (process.env.WIT_TOKEN) :
-    config.get('witAccessToken');
+const APP_SECRET = process.env.MESSENGER_APP_SECRET;
+const VALIDATION_TOKEN = process.env.MESSENGER_VALIDATION_TOKEN;
+const PAGE_ACCESS_TOKEN = process.env.MESSENGER_PAGE_ACCESS_TOKEN;
+const WIT_TOKEN = process.env.WIT_TOKEN;
 
 const Wit = require('node-wit').Wit;
 
