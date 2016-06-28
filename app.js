@@ -47,7 +47,9 @@ const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
     (process.env.MESSENGER_PAGE_ACCESS_TOKEN) :
     config.get('pageAccessToken');
 
-const WIT_TOKEN = process.env.WIT_TOKEN;
+const WIT_TOKEN = (process.env.WIT_TOKEN) ?
+    (process.env.WIT_TOKEN) :
+    config.get('witAccessToken');
 
 const Wit = require('node-wit').Wit;
 
